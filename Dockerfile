@@ -1,5 +1,5 @@
 # hadolint ignore=DL3007
-FROM ubuntu:eoan AS add-apt-repositories
+FROM ubuntu:focal AS add-apt-repositories
 
 SHELL ["/bin/bash", "-eo", "pipefail", "-c"]
 # hadolint ignore=DL3005,DL3008,DL3008 
@@ -13,8 +13,8 @@ FROM ubuntu:eoan
 LABEL maintainer="eafxx"
 
 ENV BIND_USER=bind \
-    BIND_VERSION=9.11.5 \
-    WEBMIN_VERSION=1.955 \
+    BIND_VERSION=9.16.1-0ubuntu2.6 \
+    WEBMIN_VERSION=1.970 \
     DATA_DIR=/data \
     WEBMIN_INIT_SSL_ENABLED="" \
     TZ=""
