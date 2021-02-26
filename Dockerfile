@@ -5,11 +5,11 @@ SHELL ["/bin/bash", "-eo", "pipefail", "-c"]
 # hadolint ignore=DL3005,DL3008,DL3008 
 RUN apt-get update \
  && apt-get upgrade -y \
- && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends gnupg \
- && apt-key adv --fetch-keys http://www.webmin.com/jcameron-key.asc \
- && echo "deb http://download.webmin.com/download/repository sarge contrib" >> /etc/apt/sources.list
+ && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends wget sudo gnupg2 \
+ && wget --no-check-certificate -q -O - http://www.webmin.com/jcameron-key.asc | apt-key add - \
+ && echo "deb [trusted=yes] http://download.webmin.com/download/repository sarge contrib" >> /etc/apt/sources.list
 
-FROM ubuntu:eoan
+FROM ubuntu:focal
 LABEL maintainer="eafxx"
 
 ENV BIND_USER=bind \
